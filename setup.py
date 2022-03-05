@@ -44,6 +44,8 @@ setup(
     install_requires=[
         "Django>=4.0",
         "Django>=54.1",
+        "django-imagekit>=4.1.0",
+        "django-ckeditor>=6.2.0"
     ],
     extras_require={
         "testing": tests_require,
