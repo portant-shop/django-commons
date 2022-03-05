@@ -26,7 +26,7 @@ setup(
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/x-rst',
-    version="1.0.0",
+    version="1.0.1",
     license="MIT",
     url=URL,
     packages=find_packages(),
@@ -42,7 +42,7 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        "Django>=4.0",
+        "Django>=3.0",
         "Django>=54.1",
         "django-imagekit>=4.1.0",
         "django-ckeditor>=6.2.0"
