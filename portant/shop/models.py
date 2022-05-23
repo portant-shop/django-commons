@@ -74,7 +74,7 @@ class LegalInfoBase(models.Model):
     iban = models.CharField(max_length=25, verbose_name=_("IBAN"))
     address = models.ForeignKey(
         'people.Address', on_delete=models.CASCADE, verbose_name=_("Address"))
-    currency = models.CharField(max_length=3, default='kn', verbose_name=_('Currency'))
+    currency = models.CharField(max_length=3, default='HRK', verbose_name=_('Currency'))
 
     class Meta:
         verbose_name = _('Legal Info')
