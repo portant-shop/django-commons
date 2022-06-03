@@ -1,0 +1,419 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-29 20:04+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+#: portant/commons/imaging.py:9
+#, python-format
+msgid "Min width: %(width)spx"
+msgstr "Minimalna širina: %(width)spx"
+
+#: portant/commons/imaging.py:12
+#, python-format
+msgid "Min height: %(height)spx"
+msgstr "Minimalna visina: %(height)spx"
+
+#: portant/commons/imaging.py:22
+#, python-format
+msgid "Image width must be >= %(min_width)spx."
+msgstr "Širina slike mora biti >= %(min_width)spx."
+
+#: portant/commons/imaging.py:26
+#, python-format
+msgid "Image height must be >= %(min_height)spx."
+msgstr "Visina slike mora biti >= %(min_height)spx."
+
+#: portant/commons/imaging.py:35
+#, python-format
+msgid "Image width must not be more than %(max_height)spx"
+msgstr ""
+
+#: portant/commons/mixins.py:17
+msgid "This field will be automatically filled from name."
+msgstr ""
+
+#: portant/shop/models.py:24
+msgid "Invoice"
+msgstr ""
+
+#: portant/shop/models.py:25
+msgid "Credit card"
+msgstr ""
+
+#: portant/shop/models.py:26
+msgid "Cash on delivery"
+msgstr ""
+
+#: portant/shop/models.py:42
+msgid "Courier service"
+msgstr ""
+
+#: portant/shop/models.py:43
+msgid "Pickup"
+msgstr ""
+
+#: portant/shop/models.py:61
+msgid "Web Domain"
+msgstr ""
+
+#: portant/shop/models.py:64
+msgid ""
+"If your company already has a web address, input it here. Otherwise, leave "
+"it blank."
+msgstr ""
+
+#: portant/shop/models.py:69
+msgid "Legal Name"
+msgstr ""
+
+#: portant/shop/models.py:70
+msgid "Legal/registered name of your company."
+msgstr ""
+
+#: portant/shop/models.py:74
+msgid "Shop Name"
+msgstr ""
+
+#: portant/shop/models.py:76
+msgid ""
+"Brand name for your webshop. Leave blank if you want to use your company "
+"legal name."
+msgstr ""
+
+#: portant/shop/models.py:80
+msgid "Contact Email"
+msgstr ""
+
+#: portant/shop/models.py:81
+msgid "Email address that will be displayed on your terms of use page."
+msgstr ""
+
+#: portant/shop/models.py:85
+msgid "Phone"
+msgstr ""
+
+#: portant/shop/models.py:86
+msgid "Phone number that will be displayed on your terms of use page."
+msgstr ""
+
+#: portant/shop/models.py:90
+msgid "Fax"
+msgstr ""
+
+#: portant/shop/models.py:91
+msgid "Feel free to leave blank, unless you still use a fax machine."
+msgstr ""
+
+#: portant/shop/models.py:94
+msgid "Legal Representative"
+msgstr ""
+
+#: portant/shop/models.py:95
+msgid "A person that has power of signature within the company."
+msgstr ""
+
+#: portant/shop/models.py:98
+msgid "VAT ID"
+msgstr ""
+
+#: portant/shop/models.py:99
+msgid "Company VAT number."
+msgstr ""
+
+#: portant/shop/models.py:102
+msgid "Registry Number"
+msgstr ""
+
+#: portant/shop/models.py:104
+msgid ""
+"Unique number issued by the state registry responsible for founding the "
+"company"
+msgstr ""
+
+#: portant/shop/models.py:108
+msgid "Registry Authority"
+msgstr ""
+
+#: portant/shop/models.py:110
+msgid "Court or government institution where the company was registered."
+msgstr ""
+
+#: portant/shop/models.py:116
+msgid "Share Capital"
+msgstr ""
+
+#: portant/shop/models.py:118
+msgid "IBAN"
+msgstr ""
+
+#: portant/shop/models.py:120 portant/shop/models.py:248
+msgid "Address"
+msgstr ""
+
+#: portant/shop/models.py:121
+msgid ""
+"\n"
+"            Physical address where the company is registered at.\n"
+"            This may be different from operating address, where the company "
+"offices are located.\n"
+"        "
+msgstr ""
+
+#: portant/shop/models.py:127
+msgid "Currency"
+msgstr ""
+
+#: portant/shop/models.py:128
+msgid "Official currency in the country where the company is registered."
+msgstr ""
+
+#: portant/shop/models.py:132 portant/shop/models.py:133
+msgid "Legal Info"
+msgstr ""
+
+#: portant/shop/models.py:141
+msgid "Copy and paste the URL to your Facebook page from the browser"
+msgstr ""
+
+#: portant/shop/models.py:146
+msgid "Copy and paste the URL to your Instagram page from the browser"
+msgstr ""
+
+#: portant/shop/models.py:151
+msgid "Copy and paste the full URL to your Twitter page from the browser"
+msgstr ""
+
+#: portant/shop/models.py:156
+msgid "Copy and paste the full URL to your Linkedin page from the browser"
+msgstr ""
+
+#: portant/shop/models.py:161 portant/shop/models.py:162
+msgid "Social Links"
+msgstr ""
+
+#: portant/shop/models.py:184
+msgid "Does your shop accept payments via bank account transfer?"
+msgstr ""
+
+#: portant/shop/models.py:188
+msgid "Does your shop accept payments on delivery?"
+msgstr ""
+
+#: portant/shop/models.py:197
+msgid "Standard delivery cost for purchased items."
+msgstr ""
+
+#: portant/shop/models.py:201
+msgid ""
+"\n"
+"            Minimum purchase amount for free delivery. Leave blank if you "
+"want to charge delivery\n"
+"            regardeless of purchase amount.\n"
+"        "
+msgstr ""
+
+#: portant/shop/models.py:208
+msgid "WSPay Shop ID"
+msgstr ""
+
+#: portant/shop/models.py:210
+msgid "WSPay Secret Key"
+msgstr ""
+
+#: portant/shop/models.py:211
+msgid "WSPay Production"
+msgstr ""
+
+#: portant/shop/models.py:215
+msgid "Payment Configuration"
+msgstr ""
+
+#: portant/shop/models.py:216
+msgid "Payment Configurations"
+msgstr ""
+
+#: portant/shop/models.py:222
+msgid "Both wspay shop id and secret key are required when WSPay is selected."
+msgstr ""
+
+#: portant/shop/models.py:242
+msgid "Name"
+msgstr ""
+
+#: portant/shop/models.py:243
+msgid ""
+"\n"
+"            Descriptive name of this location. Can be a neighbourhood where "
+"the shop is located\n"
+"            or a city eg. London 2\n"
+"        "
+msgstr ""
+
+#: portant/shop/models.py:250
+msgid "Main Location"
+msgstr ""
+
+#: portant/shop/models.py:251
+msgid "Main location data is show at your terms of use page."
+msgstr ""
+
+#: portant/shop/models.py:254
+msgid "Active"
+msgstr ""
+
+#: portant/shop/models.py:255
+msgid "Locations can not be deleted, set to inactive instead."
+msgstr ""
+
+#: portant/shop/models.py:258
+msgid "Pickup Enabled"
+msgstr ""
+
+#: portant/shop/models.py:259
+msgid ""
+"\n"
+"            Set this to enabled if you want to allow webshop buyers to "
+"pickup purchased\n"
+"            products at this location.\n"
+"        "
+msgstr ""
+
+#: portant/shop/models.py:265
+msgid "Working Hours"
+msgstr ""
+
+#: portant/shop/models.py:266
+msgid "Let your webshop visitors know when this location is open."
+msgstr ""
+
+#: portant/shop/models.py:271
+msgid "Pickup Location"
+msgstr ""
+
+#: portant/shop/models.py:272
+msgid "Pickup Locations"
+msgstr ""
+
+#: portant/shop/models.py:277 portant/shop/models.py:331
+msgid "Title"
+msgstr ""
+
+#: portant/shop/models.py:278
+msgid ""
+"\n"
+"            A brief title of your webshop. Should be 60 characters or less. "
+"If left blank,\n"
+"            it will be auto-generated.\n"
+"        "
+msgstr ""
+
+#: portant/shop/models.py:284 portant/shop/models.py:333
+msgid "Description"
+msgstr ""
+
+#: portant/shop/models.py:285
+msgid ""
+"\n"
+"            A more descriptive information about your shop. Keep between 150 "
+"and 160 characters.\n"
+"            If left blank, it will be auto-generated.\n"
+"        "
+msgstr ""
+
+#: portant/shop/models.py:290
+msgid "Site URL"
+msgstr ""
+
+#: portant/shop/models.py:293 portant/shop/models.py:341
+msgid "Image"
+msgstr ""
+
+#: portant/shop/models.py:295
+#, python-format
+msgid ""
+"Default image to display for sharing pages over social networks. "
+"%(dimensions)s"
+msgstr ""
+
+#: portant/shop/models.py:312 portant/shop/models.py:313
+msgid "Site Metadata"
+msgstr ""
+
+#: portant/shop/models.py:329
+msgid "Slug"
+msgstr ""
+
+#: portant/shop/models.py:334
+msgid "Keywords"
+msgstr ""
+
+#: portant/shop/models.py:336
+msgid "Type"
+msgstr ""
+
+#: portant/shop/models.py:356 portant/shop/models.py:357
+msgid "Page SEO"
+msgstr ""
+
+#: portant/shop/models.py:394
+msgid "Logo for light background"
+msgstr ""
+
+#: portant/shop/models.py:395
+#, python-format
+msgid ""
+"\n"
+"            Primary logo to be displayed on light surfaces. If left blank, "
+"placeholder logo\n"
+"            will be used instead. %(dimensions)s\n"
+"        "
+msgstr ""
+
+#: portant/shop/models.py:403
+msgid "Logo for dark background"
+msgstr ""
+
+#: portant/shop/models.py:404
+#, python-format
+msgid ""
+"\n"
+"            Secondary logo to be displayed on dark surfaces. If left blank, "
+"primary logo\n"
+"            will be used instead. %(dimensions)s\n"
+"        "
+msgstr ""
+
+#: portant/shop/models.py:411
+msgid "From Email"
+msgstr ""
+
+#: portant/shop/models.py:415
+msgid "Theme Name"
+msgstr ""
+
+#: portant/shop/models.py:421
+msgid "Primary Color"
+msgstr ""
+
+#: portant/shop/models.py:427
+msgid "Secondary Color"
+msgstr ""
+
+#: portant/shop/models.py:433 portant/shop/models.py:434
+msgid "Shop Configuration"
+msgstr ""

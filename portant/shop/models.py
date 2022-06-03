@@ -8,6 +8,7 @@ from imagekit.processors import ResizeToFill
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone as tz
 
 from portant.commons.imaging import get_image_help_text, validate_image_size
 
@@ -55,17 +56,60 @@ class DeliveryType(Enum):
 
 
 class LegalInfoBase(models.Model):
-    web_domain = models.CharField(max_length=20, verbose_name=_('Web Domain'))
-    legal_name = models.CharField(max_length=255, verbose_name=_("Legal Name"))
+    web_domain = models.CharField(
+        max_length=20,
+        verbose_name=_('Web Domain'),
+        blank=True,
+        help_text=_(
+            'If your company already has a web address, input it here. Otherwise, leave it blank.'
+        )
+    )
+    legal_name = models.CharField(
+        max_length=255,
+        verbose_name=_("Legal Name"),
+        help_text=_('Legal/registered name of your company.')
+    )
     shop_name = models.CharField(
-        max_length=255, null=False, blank=True, verbose_name=_("Shop Name"))
-    contact_email = models.EmailField(verbose_name=_("Contact Email"))
-    phone = models.CharField(max_length=20, verbose_name=_("Phone"))
-    fax = models.CharField(max_length=20, null=False, blank=True, verbose_name=_("Fax"))
-    legal_representative = models.CharField(max_length=255, verbose_name=_("Legal Representative"))
-    vat_id = models.CharField(max_length=20, verbose_name=_("VAT ID"))
-    registry_number = models.CharField(max_length=20, verbose_name=_("Registry Number"))
-    registry_authority = models.CharField(max_length=100, verbose_name=_("Registry Authority"))
+        max_length=255, null=False, blank=True,
+        verbose_name=_("Shop Name"),
+        help_text=_(
+            'Brand name for your webshop. Leave blank if you want to use your company legal name.'
+        )
+    )
+    contact_email = models.EmailField(
+        verbose_name=_("Contact Email"),
+        help_text=_('Email address that will be displayed on your terms of use page.')
+    )
+    phone = models.CharField(
+        max_length=20,
+        verbose_name=_("Phone"),
+        help_text=_('Phone number that will be displayed on your terms of use page.')
+    )
+    fax = models.CharField(
+        max_length=20, null=False, blank=True,
+        verbose_name=_("Fax"),
+        help_text=_('Feel free to leave blank, unless you still use a fax machine.')
+    )
+    legal_representative = models.CharField(
+        max_length=255, verbose_name=_("Legal Representative"),
+        help_text=_('A person that has power of signature within the company.')
+    )
+    vat_id = models.CharField(
+        max_length=20, verbose_name=_("VAT ID"),
+        help_text=_('Company VAT number.')
+    )
+    registry_number = models.CharField(
+        max_length=20, verbose_name=_("Registry Number"),
+        help_text=_(
+            'Unique number issued by the state registry responsible for founding the company'
+        )
+    )
+    registry_authority = models.CharField(
+        max_length=100, verbose_name=_("Registry Authority"),
+        help_text=_(
+            'Court or government institution where the company was registered.'
+        )
+    )
     share_capital = models.DecimalField(
         max_digits=16,
         decimal_places=2,
@@ -73,8 +117,16 @@ class LegalInfoBase(models.Model):
     )
     iban = models.CharField(max_length=25, verbose_name=_("IBAN"))
     address = models.ForeignKey(
-        'people.Address', on_delete=models.CASCADE, verbose_name=_("Address"))
-    currency = models.CharField(max_length=3, default='HRK', verbose_name=_('Currency'))
+        'people.Address', on_delete=models.CASCADE, verbose_name=_("Address"),
+        help_text=_("""
+            Physical address where the company is registered at.
+            This may be different from operating address, where the company offices are located.
+        """)
+    )
+    currency = models.CharField(
+        max_length=3, default='HRK', verbose_name=_('Currency'),
+        help_text=_('Official currency in the country where the company is registered.')
+    )
 
     class Meta:
         verbose_name = _('Legal Info')
@@ -127,16 +179,30 @@ class PaymentProvider(Enum):
 
 
 class PaymentConfigBase(models.Model):
-    invoice_payments = models.BooleanField(default=True)
-    pay_on_delivery = models.BooleanField(default=True)
+    invoice_payments = models.BooleanField(
+        default=True,
+        help_text=_('Does your shop accept payments via bank account transfer?')
+    )
+    pay_on_delivery = models.BooleanField(
+        default=True,
+        help_text=_('Does your shop accept payments on delivery?')
+    )
     card_payments = models.BooleanField(default=False)
     card_provider = models.CharField(
         null=True, blank=False, max_length=50, choices=PaymentProvider.choices()
     )
     loyalty_card_enabled = models.BooleanField(default=False)
     loyalty_card_name = models.CharField(max_length=100, null=False, blank=True)
-    delivery_cost = models.PositiveIntegerField()
-    free_delivery_min_price = models.PositiveIntegerField(null=True, blank=True)
+    delivery_cost = models.PositiveIntegerField(
+        help_text=_('Standard delivery cost for purchased items.')
+    )
+    free_delivery_min_price = models.PositiveIntegerField(
+        null=True, blank=True,
+        help_text=_("""
+            Minimum purchase amount for free delivery. Leave blank if you want to charge delivery
+            regardeless of purchase amount.
+        """)
+    )
 
     wspay_shop_id = models.CharField(
         max_length=50, null=False, blank=True, verbose_name=_('WSPay Shop ID'))
@@ -172,12 +238,33 @@ class PaymentConfigBase(models.Model):
 
 
 class PickupLocationBase(models.Model):
-    name = models.CharField(max_length=100, verbose_name=_('Name'), unique=True)
+    name = models.CharField(
+        max_length=100, verbose_name=_('Name'), unique=True,
+        help_text=_("""
+            Descriptive name of this location. Can be a neighbourhood where the shop is located
+            or a city eg. London 2
+        """)
+    )
     address = models.CharField(max_length=500, verbose_name=_('Address'))
-    main = models.BooleanField(default=False, verbose_name=_('Main Location'))
-    active = models.BooleanField(default=True, verbose_name=_('Active'))
-    enabled = models.BooleanField(default=True, verbose_name=_('Pickup Enabled'))
-    working_hours = RichTextUploadingField(null=False, blank=True, verbose_name=_('Working Hours'))
+    main = models.BooleanField(
+        default=False, verbose_name=_('Main Location'),
+        help_text=_('Main location data is show at your terms of use page.')
+    )
+    active = models.BooleanField(
+        default=True, verbose_name=_('Active'),
+        help_text=_('Locations can not be deleted, set to inactive instead.')
+    )
+    enabled = models.BooleanField(
+        default=True, verbose_name=_('Pickup Enabled'),
+        help_text=_("""
+            Set this to enabled if you want to allow webshop buyers to pickup purchased
+            products at this location.
+        """)
+    )
+    working_hours = RichTextUploadingField(
+        null=False, blank=True, verbose_name=_('Working Hours'),
+        help_text=_('Let your webshop visitors know when this location is open.')
+    )
 
     class Meta:
         abstract = True
@@ -186,14 +273,29 @@ class PickupLocationBase(models.Model):
 
 
 class SiteMetadataBase(models.Model):
-    title = models.CharField(max_length=60, null=False, blank=True, verbose_name=_('Title'))
+    title = models.CharField(
+        max_length=60, null=False, blank=True, verbose_name=_('Title'),
+        help_text=_("""
+            A brief title of your webshop. Should be 60 characters or less. If left blank,
+            it will be auto-generated.
+        """)
+    )
     description = models.CharField(
-        max_length=155, null=False, blank=True, verbose_name=_('Description'))
+        max_length=155, null=False, blank=True, verbose_name=_('Description'),
+        help_text=_("""
+            A more descriptive information about your shop. Keep between 150 and 160 characters.
+            If left blank, it will be auto-generated.
+        """)
+    )
     siteUrl = models.URLField(verbose_name=_('Site URL'))
     image = models.ImageField(
         upload_to='images/originals',
         verbose_name=_('Image'),
-        help_text=OG_IMAGE_HELP_TEXT
+        help_text=_(
+            'Default image to display for sharing pages over social networks. %(dimensions)s' % {
+                'dimensions': OG_IMAGE_HELP_TEXT
+            }
+        )
     )
     cropped_image = ImageSpecField(
         source='image',
@@ -290,15 +392,22 @@ class ShopConfigBase(models.Model):
     logo = models.ImageField(
         upload_to='images/originals',
         verbose_name=_('Logo for light background'),
-        help_text=LOGO_IMAGE_HELP_TEXT
+        help_text=_("""
+            Primary logo to be displayed on light surfaces. If left blank, placeholder logo
+            will be used instead. %(dimensions)s
+        """ % {'dimensions': LOGO_IMAGE_HELP_TEXT})
     )
     logo_dark_bg = models.ImageField(
         blank=True,
         upload_to='images/originals',
         verbose_name=_('Logo for dark background'),
-        help_text=LOGO_IMAGE_HELP_TEXT
+        help_text=_("""
+            Secondary logo to be displayed on dark surfaces. If left blank, primary logo
+            will be used instead. %(dimensions)s
+        """ % {'dimensions': LOGO_IMAGE_HELP_TEXT})
+
     )
-    terms_of_use_active_date = models.DateField()
+    terms_of_use_active_date = models.DateField(default=tz.now)
     from_email = models.EmailField(null=False, blank=True, verbose_name=_('From Email'))
     theme_name = models.CharField(
         max_length=20,
