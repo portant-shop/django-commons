@@ -12,9 +12,12 @@ class CreatedModifiedMixin(models.Model):
 
 
 class SlugifyMixin(models.Model):
+    slug_field_name = 'name'
+
     slug = models.SlugField(
         blank=True, null=False, max_length=255,
         help_text=_('This field will be automatically filled from name.'),
+        unique=True
     )
 
     class Meta:
@@ -22,6 +25,6 @@ class SlugifyMixin(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id or not self.slug:
-            self.slug = slugify(self.name)
+            self.slug = slugify(getattr(self, self.slug_field_name))
 
         super().save(*args, **kwargs)
