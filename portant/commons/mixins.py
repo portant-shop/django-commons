@@ -1,5 +1,5 @@
 from django.db import models
-from django.template.defaultfilters import slugify
+from portant.commons.slugify import unique_slugify
 from django.utils.translation import gettext_lazy as _
 
 
@@ -25,6 +25,6 @@ class SlugifyMixin(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id or not self.slug:
-            self.slug = slugify(getattr(self, self.slug_field_name))
+            self.slug = unique_slugify(self, getattr(self, self.slug_field_name))
 
         super().save(*args, **kwargs)
