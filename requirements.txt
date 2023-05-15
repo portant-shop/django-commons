@@ -4,4 +4,4 @@ flake8==4.0.1
 flake8-docstrings==1.6.0
 pytest==7.0.1
 pytest-django==4.5.2
-weasyprint==54.1
+weasyprint==59.0
