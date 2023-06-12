@@ -1,4 +1,4 @@
-Django==4.1.9
+Django==4.2.2
 factory-boy==3.2.1
 flake8==6.0.0
 flake8-docstrings==1.7.0
