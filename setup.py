@@ -26,7 +26,7 @@ setup(
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/x-rst',
-    version="1.0.8",
+    version="1.0.9",
     license="MIT",
     url=URL,
     packages=find_packages(),
