@@ -14,7 +14,9 @@ def get_image_help_text(width, height):
     return '; '.join(text)
 
 
-def validate_image_size(image, min_width=0, min_height=0, max_width_to_height=None):
+def validate_image_size(
+    image, min_width=0, min_height=0, max_width_to_height=None, raise_for_errors=True
+):
     """Validate the size of an uploaded image."""
     errors = []
     if image and image.width is not None and image.width < min_width:
@@ -36,5 +38,6 @@ def validate_image_size(image, min_width=0, min_height=0, max_width_to_height=No
             'max_height': max_width_to_height * image.width
         }))
 
-    if errors:
+    if errors and raise_for_errors is True:
         raise ValidationError(errors)
+    return errors
